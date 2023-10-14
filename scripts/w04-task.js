@@ -7,7 +7,7 @@ let myProfile = {
     name: 'Trent Cooley',
     photoUrl : 'images/Glasses.jpg',
     favoriteFoods:['Banana','Apple','Pizza','Ice Cream','German Pancakes','Potatoes'],
-    hobbies: ['video games', 'tv shows', 'programing'],
+    hobbies: ['Video games', 'TV shows', 'Programming'],
     placesLived : []
 };
 
@@ -17,6 +17,9 @@ myProfile.placesLived.push({
 },{
     place: 'Fort Mill, SC',
     length: '3 years'
+},{
+    place: 'Rexburg, ID',
+    length: '2 years'
 });
 
 /* DOM Manipulation - Output */
