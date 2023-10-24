@@ -1,25 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Pokémon Encyclopedia</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap"
-          rel="stylesheet">
-        <link rel="stylesheet" href="styles/main.css">
-        <script src="scripts/project.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Webpage</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/project.css">
 </head>
 <body>
-    <h1>Pokémon Encyclopedia</h1>
-    <section id="content" style="align-content: center;">
-    <input type="text" id="pokemonInput" placeholder="Enter Pokémon name">
-    <button id="searchButton">Search</button>
-    <div id="pokemonData"></div>
-    <div id="typeButtons"></div>
-    </section>
+  <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search by name">
+        <select id="typeFilter">
+            <option value="">All</option>
+            <!-- Add options for each Pokémon type -->
+        </select>
+        <button id="searchButton">Search</button>
+      </div>
+      <div id="next-prev-button">
+        <button id="prev-button">Previous</button>
+        <button id="next-button">Next</button>
+      </div>
+
+
+      <div id="pokemonList" class="pokemon-list">
+        <!-- Pokémon cards will be displayed here -->
+      </div>
+      <script type="module" src="main.js"></script>
+      <div id="typeButtons" class="type-buttons">
+          <!-- Type filter buttons will be displayed here -->
+    </div>
+
+  <script type="module" src="scripts/project.js"></script>
+  <script type="module" src="scripts/pokemonFunctions.js"></script>
 </body>
 </html>
-

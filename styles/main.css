@@ -8,6 +8,7 @@
 /* HTML Selectors */
 body {
     font-family: 'Roboto', Helvetica, sans-serif;
+    align-items: center;
 }
 
 nav {

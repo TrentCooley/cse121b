@@ -1,0 +1,53 @@
+/* Add your CSS styles for Pokémon cards here */
+.pokemon-card {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    background-color: #f0f0f0;
+    display: inline-block;
+    width: 250px;
+}
+
+.pokemon-card h2 {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.pokemon-card img {
+    max-width: 100px;
+    display: block;
+    margin: 0 auto;
+}
+
+.pokemon-card p {
+    margin: 5px 0;
+}
+
+/* Type filter buttons styles */
+.type-buttons button {
+    background-color: #0074C4;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.type-buttons button:hover {
+    background-color: #00508C;
+}
+
+/* Search container styles */
+.search-container {
+    text-align: center;
+    margin: 20px;
+}
+
+.search-container input, .search-container select, .search-container button {
+    margin: 5px;
+    padding: 5px;
+    font-size: 16px;
+}

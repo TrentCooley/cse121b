@@ -29,7 +29,6 @@ const getTemples = async() => {
 
 /* reset Function */
 let reset = () => {
-    let templesElement = document.querySelector('#templesElement');
     while (templesElement.firstChild) {
         templesElement.removeChild(templesElement.firstChild);
     }
