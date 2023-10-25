@@ -10,7 +10,6 @@ export async function getAllPokemon(offset = 0, limit = 20) {
         allUrl+=`&offset=${offset}`
     }
     const response = await fetch(allUrl);
-    console.log(allUrl);
     const data = await response.json();
     return data.results; // Retruns an array of the results
 }
@@ -22,12 +21,7 @@ export async function getPokemonDetails(pokemon) {
     return data;
 }
 
-// Function to filter Pokémon by type
-export async function filterPokemonByType(type) {
-    const response = await fetch(`${API_URL}/type/${type}`);
-    const data = await response.json();
-    return data.pokemon.map(p => p.pokemon);
-}
+
 
 // Function to search Pokémon by name
 export async function searchPokemonByName(name) {

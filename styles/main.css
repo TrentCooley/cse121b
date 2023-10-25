@@ -8,8 +8,18 @@
 /* HTML Selectors */
 body {
     font-family: 'Roboto', Helvetica, sans-serif;
-    align-items: center;
 }
+
+#next-prev-button{
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+#prev-button, #next-button {
+    margin: 0 10px; /* Add margin to separate the buttons */
+}
+
 
 nav {
     background-color: black;

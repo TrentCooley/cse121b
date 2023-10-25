@@ -1,5 +1,5 @@
 // main.js
-import { getAllPokemon, getPokemonDetails, filterPokemonByType, searchPokemonByName } from './pokemonFunctions.js';
+import { getAllPokemon, getPokemonDetails, searchPokemonByName } from './pokemonFunctions.js';
 // DOM elements
 const searchInput = document.getElementById('searchInput');
 const typeFilter = document.getElementById('typeFilter');
@@ -8,17 +8,27 @@ const pokemonList = document.getElementById('pokemonList');
 const typeButtons = document.getElementById('typeButtons');
 const nextButton = document.getElementById('next-button');
 const prevButton = document.getElementById('prev-button');
+const fullDatabase = document.getElementById('full-database');
+let offset = 0
+let limit = 20
 
 // Function to render Pokémon cards
 async function renderPokemonCards(pokemonData) {
     pokemonList.innerHTML = ''; // Clear previous Pokémon cards
 
-    for (const pokemon of pokemonData) {
-        let pokemonDetails = await getPokemonDetails(pokemon['name']);
-        console.log(pokemonDetails);
-        const card = createPokemonCard(pokemonDetails);
+    // Use the map method to create an array of HTML cards
+    const cards = pokemonData.map(async (pokemon) => {
+        const pokemonDetails = await getPokemonDetails(pokemon.name);
+        return createPokemonCard(pokemonDetails);
+    });
+
+    // Use Promise.all to wait for all the card creation promises to resolve
+    const cardElements = await Promise.all(cards);
+
+    // Append the card elements to the list
+    cardElements.forEach((card) => {
         pokemonList.appendChild(card);
-    }
+    });
 }
 
 
@@ -41,27 +51,34 @@ function createPokemonCard(pokemon) {
 
 
 // Event listener for the search button
-searchButton.addEventListener('click', () => {
+searchButton.addEventListener('click', async () => {
     const name = searchInput.value;
-    searchPokemonByName(name);
+
+    // Call the searchPokemonByName function and wait for the result
+    const pokemon = await searchPokemonByName(name);
+
+    // Check if a Pokémon was found and render the card
+    if (pokemon) {
+        renderPokemonCards([pokemon]); // Pass the found Pokémon as an array to renderPokemonCards
+    }
 });
 
-// Event listener for type filter
-typeFilter.addEventListener('change', () => {
-    const selectedType = typeFilter.value;
-    filterPokemonByType(selectedType);
+fullDatabase.addEventListener('click', async () => {
+    offset = 0
+    getAllPokemon().then(pokemonData => {
+        renderPokemonCards(pokemonData);
+    });
 });
-
 
 nextButton.addEventListener('click', async () => {
-    offset += limit;
-    const pokemonData = await getAllPokemon();
+    offset += limit; // Update the offset here
+    const pokemonData = await getAllPokemon(offset, limit); // Pass offset as a parameter
     renderPokemonCards(pokemonData);
 });
 
 prevButton.addEventListener('click', async () => {
-    offset = Math.max(0, offset - limit);
-    const pokemonData = await getAllPokemon();
+    offset = Math.max(0, offset - limit); // Update the offset here
+    const pokemonData = await getAllPokemon(offset, limit); // Pass offset as a parameter
     renderPokemonCards(pokemonData);
 });
 
